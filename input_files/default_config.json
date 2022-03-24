@@ -1,0 +1,50 @@
+{
+  "project": {
+    "existing_data": false,
+    "project_name": "project",
+    "author_name": "sabber.ahamed"
+  },
+  "file_location": {
+    "train_path": "/Users/sabber.ahamed/Documents/test_data/org_fraud/main_features_reduced.csv",
+    "test_path": "/Users/sabber.ahamed/Documents/test_data/org_fraud/ground_truth_reduced.csv",
+    "train_data_usages_threshold": 1
+  },
+  "target_variable": null,
+  "preprocessing": {
+    "missing_values": ["nan", -1],
+    "impute_value_continuous": -1,
+    "impute_value_categorical": "missing",
+    "missing_threshold": 0.98,
+    "correlation_type": "spearman",
+    "correlation_threshold": 0.0,
+    "colinear_threshold": 0.95,
+    "feature_engineering_top_n": 15,
+    "rare_category_threshold": 0.001,
+    "ignored_features_list": []
+  },
+  "visualization": true,
+  "modeling": true,
+  "cross_validation": {
+    "cross_validation_size": 0.2,
+    "cv_type": "statified",
+    "date_time_column": null,
+    "num_of_cross_validation": 4,
+    "random_state": 1,
+    "save_test_prediction": false,
+    "test_prediction_type": "probability",
+    "test_size": 0.2
+  },
+  "algorithms": [
+    "LightGBM_Classifier",
+    "RandomForest_Classifier",
+    "ExtraTrees_Classifier",
+    "XGBoost_Classifier"
+  ],
+  "hyperparameter_tuning": {
+    "num_of_trials": 2,
+    "save_history": false
+  },
+  "data_balance_technique": ["UnderSampling", "OverSampling", "SMOTE", null],
+  "feature_selection_technique": "optimization",
+  "scoring_function": "roc_auc"
+}
