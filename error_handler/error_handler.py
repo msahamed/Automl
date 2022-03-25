@@ -1,23 +1,30 @@
-import os
+import sys
 import logging
+from datetime import date
 
 log = logging.getLogger(__name__)
 
-class ErrorHander(object):
-    def __init__(self, error_location, message, is_exit = False):
+class ErrorHandler(object):
+    def __init__(self, error_location, message, exit = False):
+        self.header = "Error"
         self.error_location = error_location
         self.message = message
-        self.is_exit = is_exit
+        self.exit = exit
+        self.print_error()
 
     def print_error(self)->None:
-        header = 'Error'
-
-        log.info(f'\n--------------- {header} -------------------\
-                \n{self.error_location}\
-                \n{self.message}\
+        log.info(f'\n--------------- {self.header} -------------------\
+                \nError location: {self.error_location}\
+                \nError message: {self.message}\
+                \nError Time: {date.today().strftime("%B %d, %Y %H:%M:%S")}\
                 \n--------------------------------------------')
         self.exit_program()
         
     def exit_program(self)->None:
-        if self.is_exit:
-            os._exit(99)
+        if self.exit:
+            print(f'\n--------------- {self.header} -------------------\
+                \nError location: {self.error_location}\
+                \nError message: {self.message}\
+                \nError Time: {date.today().strftime("%B %d, %Y %H:%M:%S")}\
+                \n--------------------------------------------')
+            sys.exit(99)

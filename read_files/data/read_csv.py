@@ -6,13 +6,12 @@ log = logging.getLogger(__name__)
 
 
 class ReadCSVFile(object):
-    def __init__(self, file_path: str, target:str)->None:
+    def __init__(self, file_path: str = None)->None:
         self.file_path = file_path
-        self.target = target
     
-    def read_data(self, path: str)->dd.DataFrame:
+    def read_data(self, path: str):
         start_time = time.time()
-        assert self.file_path, 'Data file path is not provided'
+        assert self.file_path is None, 'Data file path is not provided'
 
         try:
             df = dd.read_csv(self.file_path)
